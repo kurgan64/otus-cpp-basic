@@ -49,7 +49,7 @@ int main(int args, char *argv[])
     std::string name;
     std::cout << "Hi! Enter your name, please:" << std::endl;
     std::cin >> name;
-    std::cout << name << " " << random_value << std::endl;
+    // std::cout << name << " " << random_value << std::endl;
     int current_number;
     std::cout << "Enter yuor guess:" << std::endl;
     int attempts = 0;
@@ -58,9 +58,9 @@ int main(int args, char *argv[])
         attempts++;
         current_number = get_user_number2();
 
-        if (current_number < random_value)
+        if (current_number > random_value)
             std::cout << "less than " << current_number << std::endl;
-        else if (current_number > random_value)
+        else if (current_number < random_value)
             std::cout << "greater than " << current_number << std::endl;
         else
             std::cout << "you win! attempts = " << attempts << std::endl;

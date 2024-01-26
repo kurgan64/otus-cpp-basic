@@ -62,7 +62,7 @@ namespace high_score
             std::cout << high_score.first << "\t" << high_score.second << std::endl;
         }
     }
-    void add_or_update_high_score(const std::string name, const int attempts)
+    void add_or_update_high_score(const std::string &name, const int attempts)
     {
         bool equal_name = false;
         for (auto &high_score : high_scores)
@@ -77,7 +77,7 @@ namespace high_score
         if (!equal_name)
             high_scores.push_back({name, attempts});
     }
-    int save_score(const std::string name, const int attempts)
+    int save_score(const std::string &name, const int attempts)
     {
         read_high_scores_from_file();
         add_or_update_high_score(name, attempts);

@@ -15,6 +15,20 @@ namespace argument
         is_max_or_level = true;
         return false;
     };
+    int check_value(const std::string &value)
+    {
+        int param;
+        try
+        {
+            param = std::stoi(value);
+        }
+        catch (const std::exception &e)
+        {
+            std::cout << "missing number after parameter" << '\n';
+            param = 0;
+        }
+        return param;
+    };
     int parser_params(const int args, char **argv)
     {
         int max_value = 0;
@@ -31,14 +45,22 @@ namespace argument
                     high_score::print_high_scores();
                     break;
                 }
+                if (args == (i + 1))
+                {
+                    std::cout << "There is not value after the parameter" << std::endl;
+                    max_value = 0;
+                    break;
+                }
                 if (arg_value == "-level")
                 {
+                    parameter_value = check_value(argv[i + 1]);
+                    if (!parameter_value)
+                        return 0;
                     if (is_present_level_max())
                     {
                         max_value = 0;
                         break;
                     }
-                    parameter_value = std::stoi(argv[i + 1]);
                     switch (parameter_value)
                     {
                     case 1:
@@ -54,12 +76,15 @@ namespace argument
                 }
                 if (arg_value == "-max")
                 {
+
+                    parameter_value = check_value(argv[i + 1]);
+                    if (!parameter_value)
+                        return 0;
                     if (is_present_level_max())
                     {
                         max_value = 0;
                         break;
                     }
-                    parameter_value = std::stoi(argv[i + 1]);
                     if (parameter_value > 0 && parameter_value <= 100)
                     {
                         max_value = parameter_value;
