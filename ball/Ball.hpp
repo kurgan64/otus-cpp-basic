@@ -8,7 +8,7 @@
 class Ball {
  public:
   Ball() = default;
-  Ball(const Point& center, const Point& vector, const Color color,
+  Ball(const Point& center, const Point& vector, const Color& color,
        const double radius, const bool isCollidable);
   Ball(const double x, const double y, const double vx, const double vy,
        const double red, const double green, const double blue,

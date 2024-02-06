@@ -81,7 +81,7 @@ Ball::Ball(const double x, const double y, const double vx, const double vy,
   this->radius = radius;
   this->isCollidable = isCollidable;
 };
-Ball::Ball(const Point& center, const Point& vector, const Color color,
+Ball::Ball(const Point& center, const Point& vector, const Color& color,
            const double radius, const bool isCollidable) {
   this->center = center;
   this->velocity.setVector(vector);
