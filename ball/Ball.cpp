@@ -8,16 +8,16 @@
  * @param velocity новое значение скорости
  */
 void Ball::setVelocity(const Velocity& velocity) {
-  // TODO: место для доработки
-  this->velocity = velocity;
+    // TODO: место для доработки
+    this->velocity = velocity;
 }
 
 /**
  * @return скорость объекта
  */
 Velocity Ball::getVelocity() const {
-  // TODO: место для доработки
-  return velocity;
+    // TODO: место для доработки
+    return velocity;
 }
 
 /**
@@ -29,8 +29,8 @@ Velocity Ball::getVelocity() const {
  * @param painter контекст отрисовки
  */
 void Ball::draw(Painter& painter) const {
-  // TODO: место для доработки
-  painter.draw(center, radius, color);
+    // TODO: место для доработки
+    painter.draw(center, radius, color);
 }
 
 /**
@@ -38,16 +38,16 @@ void Ball::draw(Painter& painter) const {
  * @param center новый центр объекта
  */
 void Ball::setCenter(const Point& center) {
-  // TODO: место для доработки
-  this->center = center;
+    // TODO: место для доработки
+    this->center = center;
 }
 
 /**
  * @return центр объекта
  */
 Point Ball::getCenter() const {
-  // TODO: место для доработки
-  return center;
+    // TODO: место для доработки
+    return center;
 }
 
 /**
@@ -56,8 +56,8 @@ Point Ball::getCenter() const {
  * не требуется
  */
 double Ball::getRadius() const {
-  // TODO: место для доработки
-  return radius;
+    // TODO: место для доработки
+    return radius;
 }
 
 /**
@@ -68,25 +68,27 @@ double Ball::getRadius() const {
  * эквивалентна объему: PI * radius^3 * 4. / 3.
  */
 double Ball::getMass() const {
-  // TODO: место для доработки
-  return M_PI * sqrt(radius) * radius * 4. / 3.;
+    // TODO: место для доработки
+    return M_PI * sqrt(radius) * radius * 4. / 3.;
 }
 Ball::Ball(const double x, const double y, const double vx, const double vy,
            const double red, const double green, const double blue,
            const int radius, const bool isCollidable) {
-  this->center.x = x;
-  this->center.y = y;
-  this->velocity.setVector({vx, vy});
-  this->color = {red, green, blue};
-  this->radius = radius;
-  this->isCollidable = isCollidable;
+    this->center.x = x;
+    this->center.y = y;
+    this->velocity.setVector({vx, vy});
+    this->color = {red, green, blue};
+    this->radius = radius;
+    this->isCollidable = isCollidable;
 };
 Ball::Ball(const Point& center, const Point& vector, const Color& color,
            const double radius, const bool isCollidable) {
-  this->center = center;
-  this->velocity.setVector(vector);
-  this->color = color;
-  this->radius = radius;
-  this->isCollidable = isCollidable;
+    this->center = center;
+    this->velocity.setVector(vector);
+    this->color = color;
+    this->radius = radius;
+    this->isCollidable = isCollidable;
 }
-bool Ball::IsCollidable() const { return isCollidable; };
+bool Ball::IsCollidable() const {
+    return isCollidable;
+};
