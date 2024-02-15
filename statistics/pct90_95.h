@@ -18,7 +18,7 @@ class Pct90 : public IStatistics {
   const char *name() const override { return "pct90"; }
 
  private:
-  mutable std::vector<double> vec;
+  std::vector<double> vec;
 };
 class Pct95 : public IStatistics {
  public:
@@ -34,7 +34,7 @@ class Pct95 : public IStatistics {
   const char *name() const override { return "pct95"; }
 
  private:
-  mutable std::vector<double> vec;
+  std::vector<double> vec;
 };
 double calc_pct(const std::vector<double> &vec, const double percent) {
   double x, int_part, frac_part;
