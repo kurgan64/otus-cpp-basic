@@ -29,10 +29,9 @@ class Mean : public IStatistics {
 };
 class Std : public IStatistics {
  public:
-  Std() : m_sum{0} {}
+  Std() {}
 
   void update(double next) override {
-    m_sum += next;
     vec.push_back(next);
   }
 
@@ -57,5 +56,4 @@ class Std : public IStatistics {
 
  private:
   mutable std::vector<double> vec;
-  double m_sum;
 };
