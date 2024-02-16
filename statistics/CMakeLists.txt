@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 project(statistics)
 set(SOURCES main.cpp)
-set(HEADERS istatistics.h min_max.h mean_std.h pct90_95.h)
+set(HEADERS istatistics.h min_max.h mean.h std.h pct.h)
 add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
 set_target_properties(${PROJECT_NAME} PROPERTIES CXX_STANDARD 17 CXX_STANDARD_REQUIRED ON)

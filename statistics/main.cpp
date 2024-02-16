@@ -1,7 +1,8 @@
 #include "istatistics.h"
 #include "min_max.h"
-#include "mean_std.h"
-#include "pct90_95.h"
+#include "mean.h"
+#include "std.h"
+#include "pct.h"
 #include <iostream>
 
 int main() {
@@ -12,8 +13,8 @@ int main() {
   statistics[1] = new Max;
   statistics[2] = new Mean;
   statistics[3] = new Std;
-  statistics[4] = new Pct90;
-  statistics[5] = new Pct95;
+  statistics[4] = new Pct(90);
+  statistics[5] = new Pct(95);
 
   double val = 0;
   while (std::cin >> val) {
