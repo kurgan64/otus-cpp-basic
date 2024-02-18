@@ -7,8 +7,7 @@
 
 class Pct : public IStatistics {
  public:
-  // Pct() = delete;
-  Pct(int percent = 100)
+  Pct(int percent)
       : m_percent(percent), m_name("pct" + std::to_string(m_percent)) {
     if (m_percent < 0) throw std::underflow_error("percent not less 0");
     if (m_percent > 100) throw std::overflow_error("percent not more 100");
