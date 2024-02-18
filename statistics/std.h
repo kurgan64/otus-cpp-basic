@@ -9,15 +9,15 @@ class Std : public IStatistics {
  public:
   Std() {}
 
-  void update(double next) override { s_vec.push_back(next); }
+  void update(double next) override { m_vec.push_back(next); }
 
   double eval() const override {
     Mean mean{};
-    for (const auto &v : s_vec) {
+    for (const auto &v : m_vec) {
       mean.update(v);
     }
     std::vector<double> squares_deviations;
-    for (auto &v : s_vec) {
+    for (auto &v : m_vec) {
       squares_deviations.push_back(std::pow((v - mean.eval()), 2));
     }
 
@@ -31,5 +31,5 @@ class Std : public IStatistics {
   const char *name() const override { return "std"; }
 
  private:
-  std::vector<double> s_vec;
+  std::vector<double> m_vec;
 };
