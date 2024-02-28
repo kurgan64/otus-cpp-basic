@@ -25,12 +25,12 @@ bool MyVector<T>::resize_array() {
   return true;
 }
 template <typename T>
-bool MyVector<T>::push_back(const T &value){
+void MyVector<T>::push_back(const T &value){
   if (m_size + 1 == m_max_size)
-    if (resize_array() == false) return false;
+    if (resize_array() == false) return;
   m_data[m_size] = value;
   m_size++;
-  return true;
+  
 };
 template <typename T>
 bool MyVector<T>::erase(const int index) {

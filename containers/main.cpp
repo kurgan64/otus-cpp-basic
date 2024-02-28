@@ -2,7 +2,14 @@
 
 #include "my_list.h"
 #include "my_vector.h"
+#include "icontainer.h"
 int main() {
+  // const int containers_count = 2;
+  // IContainer<int>* containers[containers_count];
+  // containers[0] = new MyVector<int>;
+  // containers[1] = new MyList<int>;
+
+
   MyVector<int> vec;
   MyList<int> list;
 
