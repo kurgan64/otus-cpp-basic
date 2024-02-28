@@ -1,9 +1,9 @@
-#include "my_list.h"
+#include "my_forward_list.h"
 
 #include <iostream>
 
 template <typename T>
-void MyList<T>::push_back(const T& value) {
+void MyForwardList<T>::push_back(const T& value) {
   Node<T>* node = new Node(value);
   if (is_empty()) {
     m_first = node;
@@ -13,7 +13,7 @@ void MyList<T>::push_back(const T& value) {
   m_size++;
 }
 template <typename T>
-void MyList<T>::print() const {
+void MyForwardList<T>::print() const {
   Node<T>* node = m_first;
   while (node != nullptr) {
     std::cout << node->value << " ";
@@ -23,7 +23,7 @@ void MyList<T>::print() const {
 }
 
 template <typename T>
-Node<T>* MyList<T>::get_element(const int index) const {
+Node<T>* MyForwardList<T>::get_element(const int index) const {
   if (index == 0) return m_first;
   if (index == m_size - 1) return m_last;
   Node<T>* node = m_first;
@@ -34,11 +34,11 @@ Node<T>* MyList<T>::get_element(const int index) const {
   return node;
 }
 template <typename T>
-T& MyList<T>::operator[](const int index) const {
+T& MyForwardList<T>::operator[](const int index) const {
   return get_element(index)->value;
 }
 template <typename T>
-bool MyList<T>::erase(const int index) {
+bool MyForwardList<T>::erase(const int index) {
   if (index < 0 || index > m_size) {
     std::cout << "The container element does not exist\n";
     return false;
@@ -60,7 +60,7 @@ bool MyList<T>::erase(const int index) {
   return true;
 }
 template <typename T>
-bool MyList<T>::insert(const int index, const T& value) {
+bool MyForwardList<T>::insert(const int index, const T& value) {
   if (index < 0 || index > m_size) {
     std::cout << "The container element does not exist\n";
     return false;

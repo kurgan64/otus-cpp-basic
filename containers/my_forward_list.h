@@ -9,9 +9,9 @@ struct Node {
 };
 
 template <typename T>
-class MyList : public IContainer<T> {
+class MyForwardList : public IContainer<T> {
  public:
-  MyList() : m_size(0), m_first(nullptr), m_last(nullptr) {}
+  MyForwardList() : m_size(0), m_first(nullptr), m_last(nullptr) {}
   void push_back(const T&) override;
   bool erase(const int index) override;
   bool insert(const int index, const T& value) override;
@@ -19,7 +19,7 @@ class MyList : public IContainer<T> {
   T& operator[](const int index) const override;
   bool is_empty() { return m_first == nullptr; }
   void print() const;
-  ~MyList() {
+  ~MyForwardList() {
     while (m_first != nullptr) {
       Node<T>* node = m_first;
       m_first = node->next;
@@ -34,4 +34,4 @@ class MyList : public IContainer<T> {
   Node<T>* m_last;
 };
 
-#include "my_list.cpp"
+#include "my_forward_list.cpp"
