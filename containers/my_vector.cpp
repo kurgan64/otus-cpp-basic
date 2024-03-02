@@ -1,6 +1,6 @@
 #include "my_vector.h"
 
-
+#include <string>
 template <typename T>
 MyVector<T>::MyVector(const T &value) : MyVector{} {
   push_back(value);

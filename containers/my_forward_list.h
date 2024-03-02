@@ -1,6 +1,7 @@
 #pragma once
 #include "icontainer.h"
 #include "node.h"
+#include <string>
 
 // template <typename T>
 // struct Node {

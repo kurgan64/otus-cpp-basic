@@ -1,5 +1,5 @@
 #include "my_list.h"
-
+#include <string>
 #include <iostream>
 
 template <typename T>

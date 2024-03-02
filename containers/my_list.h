@@ -1,13 +1,8 @@
 #pragma once
 #include "icontainer.h"
 #include "node.h"
-// template <typename T>
-// struct ListNode {
-//   Node(T value_) : value(value_), prev(nullptr), next(nullptr){};
-//   T value;
-//   Node* prev;
-//   Node* next;
-// };
+#include <string>
+
 template <typename T>
 class MyList : public IContainer<T> {
  public:
