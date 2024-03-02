@@ -1,6 +1,5 @@
 #include "my_vector.h"
 
-#include <iostream>
 
 template <typename T>
 MyVector<T>::MyVector(const T &value) : MyVector{} {
@@ -11,26 +10,24 @@ bool MyVector<T>::resize_array() {
   m_max_size *= 1.5;
   T *new_region = nullptr;
   try {
-    new_region = new T[m_max_size];
+    new_region = new T[m_max_size]{};
   } catch (const std::exception &e) {
     std::cerr << e.what() << '\n';
     return false;
   }
-
   for (size_t i = 0; i < m_size; i++) {
     new_region[i] = m_data[i];
   }
+  delete[] m_data;
   m_data = new_region;
-  delete[] new_region;
   return true;
 }
 template <typename T>
-void MyVector<T>::push_back(const T &value){
-  if (m_size + 1 == m_max_size)
+void MyVector<T>::push_back(const T &value) {
+  if (m_size == m_max_size)
     if (resize_array() == false) return;
   m_data[m_size] = value;
   m_size++;
-  
 };
 template <typename T>
 bool MyVector<T>::erase(const int index) {
@@ -66,9 +63,10 @@ T &MyVector<T>::operator[](const int index) const {
   return m_data[index];
 }
 template <typename T>
-void MyVector<T>::print() const {
+std::string MyVector<T>::to_string() const {
+  std::string str;
   for (int i = 0; i < size(); i++) {
-    std::cout << m_data[i] << ' ';
+    str += std::to_string(m_data[i]) + ' ';
   }
-  std::cout << std::endl;
+  return str;
 }

@@ -1,53 +1,72 @@
+#include <iomanip>
 #include <iostream>
 
-#include "my_forward_list.h"
-#include "my_vector.h"
 #include "icontainer.h"
+#include "my_forward_list.h"
+#include "my_list.h"
+#include "my_vector.h"
 int main() {
-  // const int containers_count = 2;
-  // IContainer<int>* containers[containers_count];
-  // containers[0] = new MyVector<int>;
-  // containers[1] = new MyList<int>;
+  const int containers_count = 3;
+  IContainer<int>* containers[containers_count];
+  containers[0] = new MyVector<int>;
+  containers[1] = new MyForwardList<int>;
+  containers[2] = new MyList<int>;
 
-
-  MyVector<int> vec;
-  MyForwardList<int> flist;
-
-  for (int i = 0; i < 10; i++) {
-    vec.push_back(i);
-    flist.push_back(i);
+  for (int j = 0; j < containers_count; j++) {
+    for (int i = 0; i < 10; i++) {
+      containers[j]->push_back(i);
+    }
   }
-  vec.print();
-  flist.print();
-  std::cout << "size Vector: " << vec.size() << std::endl;
-  std::cout << "max_size Vector: " << vec.max_size() << std::endl;
-  std::cout << "size List: " << flist.size() << std::endl;
-
+  for (int j = 0; j < containers_count; j++) {
+    std::cout << std::setw(12) << containers[j]->name() << "  "
+              << containers[j]->to_string() << std::endl;
+  }
+  std::cout << std::endl;
+  for (int j = 0; j < containers_count; j++) {
+    std::cout << containers[j]->name() << " size " << containers[j]->size()
+              << std::endl;
+  }
+  std::cout << std::endl;
   std::cout << "Erase elements" << std::endl;
-  for (int i = 2; i < 5; i++) {
-    vec.erase(i);
-    flist.erase(i);
+  for (int j = 0; j < containers_count; j++) {
+    for (int i = 2; i < 5; i++) {
+      containers[j]->erase(i);
+    }
   }
-  vec.print();
-  flist.print();
-
+  for (int j = 0; j < containers_count; j++) {
+    std::cout << std::setw(12) << containers[j]->name() << "  "
+              << containers[j]->to_string() << std::endl;
+  }
+  std::cout << std::endl;
   std::cout << "Insert value to begin" << std::endl;
-  vec.insert(0, 10);
-  flist.insert(0, 10);
-  vec.print();
-  flist.print();
-
+  for (int j = 0; j < containers_count; j++) {
+    containers[j]->insert(0, 10);
+  }
+  for (int j = 0; j < containers_count; j++) {
+    std::cout << std::setw(12) << containers[j]->name() << "  "
+              << containers[j]->to_string() << std::endl;
+  }
+  std::cout << std::endl;
   std::cout << "Insert value to middle" << std::endl;
-  vec.insert(4, 20);
-  flist.insert(4, 20);
-  vec.print();
-  flist.print();
-
+  for (int j = 0; j < containers_count; j++) {
+    containers[j]->insert(4, 20);
+  }
+  for (int j = 0; j < containers_count; j++) {
+    std::cout << std::setw(12) << containers[j]->name() << "  "
+              << containers[j]->to_string() << std::endl;
+  }
+  std::cout << std::endl;
   std::cout << "Insert value to end" << std::endl;
-  vec.insert(vec.size(), 30);
-  flist.insert(flist.size(), 30);
-  vec.print();
-  flist.print();
+  for (int j = 0; j < containers_count; j++) {
+    containers[j]->insert(containers[j]->size(), 30);
+  }
+  for (int j = 0; j < containers_count; j++) {
+    std::cout << std::setw(12) << containers[j]->name() << "  "
+              << containers[j]->to_string() << std::endl;
+  }
+  for (int j = 0; j < containers_count; j++) {
+    delete containers[j];
+  }
 
   return 0;
 }
