@@ -70,3 +70,43 @@ std::string MyVector<T>::to_string() const {
   }
   return str;
 }
+template <typename T>
+MyVector<T>::MyVector(const MyVector &vec)
+    : m_max_size(vec.m_max_size),
+      m_data{new T[m_max_size]{}},
+      m_size(0),
+      m_name("Vector") {
+  for (size_t i = 0; i < vec.size(); i++) {
+    m_data[i] = vec[i];
+  }
+  m_size = vec.size();
+}
+template <typename T>
+MyVector<T> &MyVector<T>::operator=(const MyVector<T> &vec) {
+  m_size = 0;
+  for (size_t i = 0; i < vec.size(); i++) {
+    this->push_back(vec[i]);
+  }
+  return *this;
+}
+template <typename T>
+MyVector<T>::MyVector(MyVector &&vec)
+    : m_max_size(vec.m_max_size),
+      m_data(new T[m_max_size]{}),
+      m_size(vec.m_size),
+      m_name(vec.m_name) {
+  vec.m_data = nullptr;
+  vec.m_size = 0;
+  vec.m_max_size = 1;
+}
+template <typename T>
+MyVector<T> &MyVector<T>::operator=(MyVector &&vec) {
+  m_data = vec.m_data;
+  m_max_size = vec.m_max_size;
+  m_size = vec.m_size;
+  m_name = vec.m_name;
+  vec.m_data = nullptr;
+  vec.m_max_size = 1;
+  vec.m_size = 0;
+  return *this;
+}

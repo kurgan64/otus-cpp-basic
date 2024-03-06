@@ -6,6 +6,28 @@
 #include "my_list.h"
 #include "my_vector.h"
 int main() {
+  // MyVector<int> vec1;
+  // for (size_t i = 0; i < 10; i++) {
+  //   vec1.push_back(i);
+  // }
+  // std::cout << vec1.to_string() << std::endl;
+  // MyVector<int> vec2;
+  // for (size_t i = 10; i > 0; i--) {
+  //   vec2.push_back(i);
+  // }
+  // std::cout << vec2.to_string() << std::endl;
+  
+  // MyVector<int> vec3=vec1;
+  // std::cout << vec3.to_string() << std::endl;
+
+  // vec3 = vec2;
+  // std::cout << vec3.to_string() << std::endl;
+
+  // MyVector<int> vec4;// = std::move(vec3);
+  // vec4 = std::move(vec3);
+  // std::cout << vec4.to_string() << std::endl;
+
+  // std::cout << "-------------------------------------------" << std::endl;
   const int containers_count = 3;
   IContainer<int>* containers[containers_count];
   containers[0] = new MyVector<int>;
