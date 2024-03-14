@@ -1,5 +1,6 @@
 #include "my_vector.h"
 
+#include <iostream>
 #include <string>
 template <typename T>
 MyVector<T>::MyVector(const T &value) : MyVector{} {
@@ -43,7 +44,10 @@ bool MyVector<T>::erase(const int index) {
 }
 template <typename T>
 bool MyVector<T>::insert(const int index, const T &value) {
-  if (index < 0 || index > size()) return false;
+  if (index < 0 || index > size()) {
+    throw std::out_of_range("The container element does not exist\n");
+    return false;
+  }
   if (index == m_size)
     push_back(value);
   else {
