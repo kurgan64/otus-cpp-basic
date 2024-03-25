@@ -1,12 +1,19 @@
 #pragma once
-#include "icontainer.h"
 #include <string>
+
+#include "icontainer.h"
 
 template <typename T>
 class MyVector : public IContainer<T> {
  public:
-  MyVector() : m_max_size(9), m_data{new T[m_max_size]{}}, m_size(0), m_name("Vector") {}
+  MyVector(int max_size = 9)
+      : m_max_size(max_size),
+        m_data{new T[m_max_size]{}},
+        m_size(0),
+        m_name("Vector") {}
   explicit MyVector(const T&);
+  MyVector(const MyVector& vec);
+  MyVector(MyVector&&);
   void push_back(const T&) override;
   bool erase(const int index) override;
   bool insert(const int index, const T& value) override;
@@ -15,6 +22,8 @@ class MyVector : public IContainer<T> {
   T& operator[](const int index) const override;
   std::string to_string() const override;
   std::string_view name() const override { return m_name; };
+  MyVector& operator=(const MyVector&);
+  MyVector& operator=(MyVector&&);
   ~MyVector() { delete[] m_data; }
 
  private:

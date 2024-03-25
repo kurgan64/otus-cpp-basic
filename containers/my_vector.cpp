@@ -1,5 +1,6 @@
 #include "my_vector.h"
 
+#include <iostream>
 #include <string>
 template <typename T>
 MyVector<T>::MyVector(const T &value) : MyVector{} {
@@ -43,7 +44,10 @@ bool MyVector<T>::erase(const int index) {
 }
 template <typename T>
 bool MyVector<T>::insert(const int index, const T &value) {
-  if (index < 0 || index > size()) return false;
+  if (index < 0 || index > size()) {
+    throw std::out_of_range("The container element does not exist\n");
+    return false;
+  }
   if (index == m_size)
     push_back(value);
   else {
@@ -69,4 +73,44 @@ std::string MyVector<T>::to_string() const {
     str += std::to_string(m_data[i]) + ' ';
   }
   return str;
+}
+template <typename T>
+MyVector<T>::MyVector(const MyVector &vec)
+    : m_max_size(vec.m_max_size),
+      m_data{new T[m_max_size]{}},
+      m_size(0),
+      m_name("Vector") {
+  for (size_t i = 0; i < vec.size(); i++) {
+    m_data[i] = vec[i];
+  }
+  m_size = vec.size();
+}
+template <typename T>
+MyVector<T> &MyVector<T>::operator=(const MyVector<T> &vec) {
+  m_size = 0;
+  for (size_t i = 0; i < vec.size(); i++) {
+    this->push_back(vec[i]);
+  }
+  return *this;
+}
+template <typename T>
+MyVector<T>::MyVector(MyVector &&vec)
+    : m_max_size(vec.m_max_size),
+      m_data(new T[m_max_size]{}),
+      m_size(vec.m_size),
+      m_name(vec.m_name) {
+  vec.m_data = nullptr;
+  vec.m_size = 0;
+  vec.m_max_size = 1;
+}
+template <typename T>
+MyVector<T> &MyVector<T>::operator=(MyVector &&vec) {
+  m_data = vec.m_data;
+  m_max_size = vec.m_max_size;
+  m_size = vec.m_size;
+  m_name = vec.m_name;
+  vec.m_data = nullptr;
+  vec.m_max_size = 1;
+  vec.m_size = 0;
+  return *this;
 }
